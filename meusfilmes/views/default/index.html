@@ -1,0 +1,28 @@
+{{extend 'layout.html'}}
+<h2>Lista de Filmes</h2>
+
+{{if media:}}
+<p><strong>Média das notas:</strong> {{=round(media, 2)}}</p>
+{{pass}}
+
+<table class="table table-striped">
+    <thead>
+        <tr><th>Título</th><th>Ano</th><th>Nota</th><th>Ações</th></tr>
+    </thead>
+    <tbody>
+        {{for f in filmes:}}
+        <tr>
+            <td>{{=f.titulo}}</td>
+            <td>{{=f.ano}}</td>
+            <td>{{=f.nota}}</td>
+            <td>
+                <a href="{{=URL('editar', args=[f.id])}}" class="btn btn-warning btn-sm">Editar</a>
+                <a href="{{=URL('deletar', args=[f.id])}}" class="btn btn-danger btn-sm"
+                   onclick="return confirm('Deseja excluir este filme?')">Excluir</a>
+            </td>
+        </tr>
+        {{pass}}
+    </tbody>
+</table>
+
+<a href="{{=URL('criar')}}" class="btn btn-primary">Adicionar Filme</a>
