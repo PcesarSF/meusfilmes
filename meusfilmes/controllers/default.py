@@ -12,7 +12,7 @@ def index():
 def criar():
     form = SQLFORM(db.filme)
     if form.process().accepted:
-        api_key = 'SUA_API_KEY_OMDB'  # Substitua pela sua chave
+        api_key = '32f8f9c9'  
         titulo = form.vars.titulo
         r = requests.get(f'http://www.omdbapi.com/?t={titulo}&apikey={api_key}')
         if r.status_code == 200:
